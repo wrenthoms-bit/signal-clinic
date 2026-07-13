@@ -103,8 +103,7 @@ export function useSpectralEditor() {
     const out = ctx.createBuffer(numberOfChannels, originalLength, sampleRate);
     stftRef.current.forEach((result, ch) => {
       const rebuilt = istft(result);
-      out.copyToChannel(rebuilt.subarray(0, originalLength), ch);
-    });
+out.copyToChannel(rebuilt.slice(0, originalLength), ch);
     return out;
   }, []);
 
